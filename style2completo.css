@@ -410,13 +410,14 @@ section {
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, 17vw);
+  /* height controlled via aspect-ratio on the .gallery-item so all cards match */
   justify-content: center;
   gap: 20px;  
   background-color: #f9fafb;
   /* margin-bottom: 20px; */
   padding-left: clamp(10px, 5%, 20px);  /* mínimo 10px, máximo 20px, relativo a ancho */
   padding-right: clamp(10px, 5%, 20px);
-  padding-bottom: 15px;
+  /* padding-bottom: 350px; */
 }
 
 .gallery-item {
@@ -426,7 +427,8 @@ section {
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
   transition: transform 0.3s ease;
-  height: 100%;
+  width: 100%;
+  aspect-ratio: 4 / 3; /* force same visual block size for all hotels */
   margin-top: 15px;  
 }
 
@@ -460,6 +462,36 @@ section {
   background: rgba(0, 0, 0, 0.6);
   border-radius: 1vw;
 }
+
+/* Cada tarjeta de la galería: imagen + leyenda */
+.gallery-card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; /* make the .gallery-item stretch to full column width */
+  text-align: center;
+}
+
+.gallery-caption {
+  margin-top: 8px;
+  font-style: italic;
+  color: #333;
+  font-size: clamp(0.85rem, 1.1vw, 1rem);
+  max-width: 100%;
+  padding: 0 6px;
+}
+
+/* Normalizar espaciado entre secciones de galería (evita gap extra
+   cuando hay varias secciones .gallery una debajo de otra) */
+.gallery {
+  margin: 0;
+  padding: 0;
+}
+
+/* Separación consistente debajo de cada grid */
+.gallery-grid {
+  margin-bottom: 20px;
+}
+
 
 /* FOOTER */
 .footer {
@@ -602,7 +634,8 @@ Ctrl + Shift + M */
   }
 
   .gallery-grid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 50vw));
+  grid-template-columns: repeat(auto-fit,25vw);
+  /* grid-auto-rows: 140px; */
   }
 
   .overlay-text {
@@ -676,6 +709,7 @@ Ctrl + Shift + M */
 
   .gallery-grid {
     grid-template-columns: 50vw;
+    /* grid-auto-rows: 30vw; */
   }
 
   .overlay-text {
@@ -775,6 +809,4 @@ Ctrl + Shift + M */
   color: #888;
   font-size: 0.85rem;
 } */
-
-
 
