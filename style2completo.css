@@ -489,7 +489,7 @@ section {
 
 /* Separación consistente debajo de cada grid */
 .gallery-grid {
-  margin-bottom: 20px;
+  padding-bottom: 20px;
 }
 
 
@@ -809,4 +809,5 @@ Ctrl + Shift + M */
   color: #888;
   font-size: 0.85rem;
 } */
+
 
